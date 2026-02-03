@@ -3,6 +3,15 @@
 민트 테마 기반의 웹 타자 게임입니다.
 타이핑 정확도와 속도를 동시에 연습할 수 있는 미니 프로젝트입니다.
 
+---
+
+## 🌐 배포 주소
+
+Vercel을 통해 배포되었습니다
+👉 https://typing-punch-game.vercel.app/
+
+---
+
 ## ✨ 주요 기능
 
 - 30초 / 1분 타이핑 모드
@@ -15,7 +24,11 @@
 - 민트 테마 UI
 - Seogung 폰트 적용
 
+---
+
 ## 🖥 미리 보기
+
+![preview](assets/preview.jpg)
 
 ## 📁 프로젝트 구조
 
@@ -27,6 +40,8 @@ typing-punch/
  ├ words.js
  └ README.md
 ```
+
+---
 
 ## 🚀 실행 방법 (로컬)
 
@@ -40,12 +55,16 @@ typing-punch/
 
 - Live Server 사용
 
+---
+
 ## 🛠 사용 기술
 
 - HTML
 - CSS
 - Vanilla JavaScript
 - localStorage
+
+---
 
 ## 🎮 게임 방법
 
@@ -61,6 +80,8 @@ A	95% 이상	45 이상
 B	90% 이상	30 이상
 C	그 외
 ```
+
+---
 
 ## 🌱 목적
 
