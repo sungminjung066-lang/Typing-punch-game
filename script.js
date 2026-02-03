@@ -124,9 +124,9 @@ function calcWPM() {
 }
 
 function calcRank(acc, wpm) {
-  if (acc >= 98 && wpm >= 60) return "S";
-  if (acc >= 95 && wpm >= 45) return "A";
-  if (acc >= 90 && wpm >= 30) return "B";
+  if (acc >= 97 && wpm >= 32) return "S";
+  if (acc >= 94 && wpm >= 25) return "A";
+  if (acc >= 90 && wpm >= 18) return "B";
   return "C";
 }
 
@@ -290,7 +290,8 @@ function startGame() {
   inputEl.disabled = false;
   inputEl.focus();
 
-  hintEl.textContent = "타이핑해서 맞히면 점수 +1 / 오타면 콤보 초기화";
+  hintEl.textContent =
+    "단어를 입력한 뒤 Enter를 눌러 펀치! (오타면 콤보 초기화)";
   setResult("");
 
   newWord();
@@ -350,41 +351,42 @@ function punchError(typedAtError) {
   updateUI();
 }
 
-// ===== 판정 =====
-function isPrefix(typed, target) {
-  return target.startsWith(typed);
+function normalizeText(s) {
+  // 공백 여러 개는 1개로, 앞뒤 공백은 제거 (난이도 완화)
+  return s.replace(/\s+/g, " ").trim();
 }
 
-function tryHitOrMistake() {
+function judgeOnEnter() {
   if (!running) return;
   if (composing) return;
   if (locked) return;
 
-  const typed = inputEl.value;
-  if (!typed) return;
+  const typedRaw = inputEl.value;
+  if (!typedRaw) return;
 
-  if (!isPrefix(typed, current)) {
-    punchError(typed);
+  const typed = normalizeText(typedRaw);
+  const target = normalizeText(current);
+
+  if (typed !== target) {
+    punchError(typedRaw);
     return;
   }
 
-  if (typed === current) {
-    locked = true;
+  locked = true;
 
-    score += 1;
-    combo += 1;
-    if (combo > bestCombo) bestCombo = combo;
+  score += 1;
+  combo += 1;
+  if (combo > bestCombo) bestCombo = combo;
 
-    correctChars += current.length;
+  correctChars += current.length;
 
-    updateUI();
-    setResult("HIT!", "hit");
+  updateUI();
+  setResult("HIT!", "hit");
 
-    requestAnimationFrame(() => {
-      newWord();
-      locked = false;
-    });
-  }
+  requestAnimationFrame(() => {
+    newWord();
+    locked = false;
+  });
 }
 
 // ===== 이벤트 =====
@@ -409,16 +411,12 @@ inputEl.addEventListener("compositionstart", () => {
 
 inputEl.addEventListener("compositionend", () => {
   composing = false;
-  tryHitOrMistake();
-});
-
-inputEl.addEventListener("input", () => {
-  tryHitOrMistake();
 });
 
 inputEl.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    tryHitOrMistake();
+    e.preventDefault();
+    judgeOnEnter();
   }
 });
 
