@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Typing Punch</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <main class="game">
+      <header class="top">
+        <h1 class="title">🔥 Typing Punch</h1>
+
+        <div class="controls">
+          <div class="seg">
+            <button class="btn active" data-time="30" id="btn30">30초</button>
+            <button class="btn" data-time="60" id="btn60">1분</button>
+          </div>
+
+          <div class="seg">
+            <button class="btn primary" id="startBtn">시작</button>
+            <button class="btn" id="resetBtn">리셋</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="stats">
+          <div class="stat">
+            <div class="label">시간</div>
+            <div class="value" id="timeLeft">—</div>
+          </div>
+          <div class="stat">
+            <div class="label">점수</div>
+            <div class="value" id="score">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">콤보</div>
+            <div class="value" id="combo">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">최고 콤보</div>
+            <div class="value" id="bestCombo">0</div>
+          </div>
+        </div>
+
+        <div class="word" id="word">시간 선택 → 시작!</div>
+
+        <input
+          id="input"
+          class="input"
+          placeholder="여기 입력"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          disabled
+        />
+
+        <p class="hint" id="hint">
+          타이핑해서 맞히면 점수 +1 / 오타면 콤보 초기화
+        </p>
+        <p class="result" id="result"></p>
+      </section>
+    </main>
+
+    <!-- 결과 모달 -->
+    <div class="modal" id="resultModal" aria-hidden="true">
+      <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <h2 id="modalTitle">결과</h2>
+
+        <div class="modal-stats">
+          <p>점수: <strong id="mScore">0</strong></p>
+          <p>최고 콤보: <strong id="mBestCombo">0</strong></p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn primary" id="playAgainBtn">다시 하기</button>
+          <button class="btn" id="closeModalBtn">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./words.js" defer></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>
