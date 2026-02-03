@@ -43,6 +43,23 @@
             <div class="label">최고 콤보</div>
             <div class="value" id="bestCombo">0</div>
           </div>
+
+          <div class="stat">
+            <div class="label">정확도</div>
+            <div class="value" id="acc">—</div>
+          </div>
+          <div class="stat">
+            <div class="label">오타</div>
+            <div class="value" id="mistakes">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">WPM</div>
+            <div class="value" id="wpm">—</div>
+          </div>
+          <div class="stat">
+            <div class="label">랭크</div>
+            <div class="value" id="rank">—</div>
+          </div>
         </div>
 
         <div class="word" id="word">시간 선택 → 시작!</div>
@@ -74,9 +91,40 @@
       >
         <h2 id="modalTitle">결과</h2>
 
-        <div class="modal-stats">
-          <p>점수: <strong id="mScore">0</strong></p>
-          <p>최고 콤보: <strong id="mBestCombo">0</strong></p>
+        <div class="modal-grid">
+          <div class="mcard">
+            <div class="mlabel">점수</div>
+            <div class="mvalue" id="mScore">0</div>
+          </div>
+          <div class="mcard">
+            <div class="mlabel">최고 콤보</div>
+            <div class="mvalue" id="mBestCombo">0</div>
+          </div>
+          <div class="mcard">
+            <div class="mlabel">정확도</div>
+            <div class="mvalue" id="mAcc">0%</div>
+          </div>
+          <div class="mcard">
+            <div class="mlabel">오타</div>
+            <div class="mvalue" id="mMistakes">0</div>
+          </div>
+          <div class="mcard">
+            <div class="mlabel">WPM</div>
+            <div class="mvalue" id="mWpm">0</div>
+          </div>
+          <div class="mcard">
+            <div class="mlabel">랭크</div>
+            <div class="mvalue" id="mRank">C</div>
+          </div>
+        </div>
+
+        <div class="history">
+          <div class="history-head">
+            <h3>기록</h3>
+            <button class="btn small" id="clearHistoryBtn">기록 지우기</button>
+          </div>
+          <div class="history-list" id="historyList"></div>
+          <p class="history-empty" id="historyEmpty">저장된 기록이 없어요.</p>
         </div>
 
         <div class="modal-actions">
